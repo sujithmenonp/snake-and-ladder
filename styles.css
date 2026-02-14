@@ -1,0 +1,89 @@
+:root {
+  --bg: #f4f4f1;
+  --panel: #ffffff;
+  --line: #dadad6;
+  --snake: #1f5f3b;
+  --food: #c43a31;
+  --text: #20201d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  width: min(94vw, 560px);
+  margin: 24px auto;
+  padding: 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+h1 {
+  font-size: 1.4rem;
+  margin: 0 0 10px;
+}
+
+.hud {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.board {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  background: #fafaf8;
+}
+
+.cell {
+  border: 1px solid #efefec;
+}
+
+.cell.snake {
+  background: var(--snake);
+}
+
+.cell.food {
+  background: var(--food);
+}
+
+.actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  border: 1px solid #b7b7b2;
+  background: #f8f8f6;
+  color: var(--text);
+  padding: 8px 12px;
+}
+
+.controls {
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+  width: fit-content;
+}
+
+.controls-row {
+  display: flex;
+  gap: 8px;
+}
+
+.hint {
+  margin: 12px 0 0;
+  font-size: 0.9rem;
+  color: #50504b;
+}
