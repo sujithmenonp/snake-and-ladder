@@ -50,6 +50,32 @@ function setStatusText() {
 function render() {
   const snakeCells = new Set(state.snake.map((segment) => pointKey(segment)));
   const foodCell = state.food ? pointKey(state.food) : null;
+  const head = state.snake[0];
+  const headKey = head ? pointKey(head) : null;
+  const tail = state.snake[state.snake.length - 1];
+  const tailKey = tail ? pointKey(tail) : null;
+  const tailPrev = state.snake[state.snake.length - 2];
+
+  const directionFromPoints = (from, to) => {
+    if (!from || !to) {
+      return null;
+    }
+    if (to.x > from.x) {
+      return 'RIGHT';
+    }
+    if (to.x < from.x) {
+      return 'LEFT';
+    }
+    if (to.y > from.y) {
+      return 'DOWN';
+    }
+    if (to.y < from.y) {
+      return 'UP';
+    }
+    return null;
+  };
+
+  const tailDirection = directionFromPoints(tailPrev, tail) || state.direction;
 
   for (let y = 0; y < config.height; y += 1) {
     for (let x = 0; x < config.width; x += 1) {
@@ -59,6 +85,13 @@ function render() {
 
       if (snakeCells.has(key)) {
         cells[idx].classList.add('snake');
+        if (key === headKey) {
+          cells[idx].classList.add('snake-head', `snake-head--${state.direction.toLowerCase()}`);
+        } else if (key === tailKey) {
+          cells[idx].classList.add('snake-tail', `snake-tail--${tailDirection.toLowerCase()}`);
+        } else {
+          cells[idx].classList.add('snake-body');
+        }
       } else if (foodCell === key) {
         cells[idx].classList.add('food');
       }

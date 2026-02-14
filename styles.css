@@ -4,6 +4,11 @@
   --panel: #fffdf8;
   --line: #d2c7b4;
   --snake: #205a3e;
+  --snake-dark: #134232;
+  --snake-light: #2f8b5c;
+  --snake-glow: rgba(31, 92, 64, 0.45);
+  --snake-eye: #141310;
+  --snake-eye-ring: rgba(255, 255, 255, 0.6);
   --food: #c3482f;
   --text: #1d1a14;
   --muted: #5d5447;
@@ -103,10 +108,105 @@ h1 {
 
 .cell {
   border: 1px solid #f1e9dc;
+  position: relative;
+  overflow: hidden;
 }
 
 .cell.snake {
-  background: var(--snake);
+  background: linear-gradient(135deg, var(--snake-light), var(--snake));
+  border-radius: 8px;
+  box-shadow:
+    inset 0 0 0 1px rgba(9, 36, 24, 0.4),
+    inset 0 -6px 10px rgba(0, 0, 0, 0.18),
+    0 2px 6px var(--snake-glow);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.cell.snake-body {
+  background: linear-gradient(135deg, #2f9060, var(--snake-dark));
+}
+
+.cell.snake-head {
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.35), transparent 40%),
+    linear-gradient(140deg, #39a86c, #1f6b4b);
+  box-shadow:
+    inset 0 0 0 1px rgba(12, 44, 32, 0.55),
+    inset 0 -6px 12px rgba(0, 0, 0, 0.2),
+    0 4px 10px rgba(31, 92, 64, 0.6);
+  transform: scale(1.02);
+}
+
+.cell.snake-head::before,
+.cell.snake-head::after {
+  content: '';
+  position: absolute;
+  width: 22%;
+  height: 22%;
+  background: var(--snake-eye);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--snake-eye-ring);
+}
+
+.cell.snake-head::before {
+  left: var(--eye-x1);
+  top: var(--eye-y1);
+}
+
+.cell.snake-head::after {
+  left: var(--eye-x2);
+  top: var(--eye-y2);
+}
+
+.cell.snake-head--up {
+  --eye-x1: 28%;
+  --eye-x2: 58%;
+  --eye-y1: 22%;
+  --eye-y2: 22%;
+}
+
+.cell.snake-head--down {
+  --eye-x1: 28%;
+  --eye-x2: 58%;
+  --eye-y1: 56%;
+  --eye-y2: 56%;
+}
+
+.cell.snake-head--left {
+  --eye-x1: 20%;
+  --eye-x2: 20%;
+  --eye-y1: 30%;
+  --eye-y2: 58%;
+}
+
+.cell.snake-head--right {
+  --eye-x1: 58%;
+  --eye-x2: 58%;
+  --eye-y1: 30%;
+  --eye-y2: 58%;
+}
+
+.cell.snake-tail {
+  background: linear-gradient(140deg, #2a7a56, var(--snake-dark));
+  box-shadow:
+    inset 0 0 0 1px rgba(9, 36, 24, 0.35),
+    inset 0 -6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.cell.snake-tail--up {
+  border-radius: 50% 50% 12% 12%;
+}
+
+.cell.snake-tail--down {
+  border-radius: 12% 12% 50% 50%;
+}
+
+.cell.snake-tail--left {
+  border-radius: 50% 12% 12% 50%;
+}
+
+.cell.snake-tail--right {
+  border-radius: 12% 50% 50% 12%;
 }
 
 .cell.food {
