@@ -3,32 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Snake</title>
+    <title>Snake and Ladder</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="container">
-      <h1>Snake</h1>
-      <div class="hud">
-        <span id="score">Score: 0</span>
-        <span id="status">Running</span>
-      </div>
+      <header class="topbar">
+        <h1>Snake and Ladder</h1>
+        <p class="subtitle">Classic arcade mode</p>
+      </header>
 
-      <div id="board" class="board" aria-label="Snake game board"></div>
-
-      <div class="actions">
-        <button id="pauseBtn" type="button">Pause</button>
-        <button id="restartBtn" type="button">Restart</button>
-      </div>
-
-      <div class="controls" aria-label="On-screen controls">
-        <button type="button" data-dir="UP">Up</button>
-        <div class="controls-row">
-          <button type="button" data-dir="LEFT">Left</button>
-          <button type="button" data-dir="DOWN">Down</button>
-          <button type="button" data-dir="RIGHT">Right</button>
+      <section class="panel">
+        <div class="hud">
+          <span id="score" class="chip chip-score">Score: 0</span>
+          <span id="status" class="chip chip-status">Running</span>
         </div>
-      </div>
+
+        <div class="board-frame">
+          <div id="board" class="board" aria-label="Snake and Ladder game board"></div>
+        </div>
+
+        <div class="actions">
+          <button id="pauseBtn" type="button">Pause</button>
+          <button id="restartBtn" type="button">Restart</button>
+        </div>
+      </section>
+
+      <section class="panel controls-panel" aria-label="On-screen controls">
+        <h2>Controls</h2>
+        <div class="controls">
+          <button type="button" data-dir="UP">Up</button>
+          <div class="controls-row">
+            <button type="button" data-dir="LEFT">Left</button>
+            <button type="button" data-dir="DOWN">Down</button>
+            <button type="button" data-dir="RIGHT">Right</button>
+          </div>
+        </div>
+      </section>
 
       <p class="hint">Arrow keys / WASD to move, Space to pause, R to restart.</p>
     </main>

@@ -1,4 +1,4 @@
-name: Deploy Snake to GitHub Pages
+name: Deploy Snake and Ladder to GitHub Pages
 
 on:
   push:
