@@ -16,7 +16,7 @@ export function createConfig(overrides = {}) {
   return {
     width: 16,
     height: 16,
-    tickMs: 160,
+    tickMs: 220,
     ...overrides
   };
 }
