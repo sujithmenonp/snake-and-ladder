@@ -94,6 +94,8 @@ h1 {
 .board {
   display: grid;
   width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
   aspect-ratio: 1;
   border: 1px solid #ddd1bc;
   background: #fcf9f2;

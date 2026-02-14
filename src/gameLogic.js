@@ -14,9 +14,9 @@ const OPPOSITES = {
 
 export function createConfig(overrides = {}) {
   return {
-    width: 20,
-    height: 20,
-    tickMs: 120,
+    width: 16,
+    height: 16,
+    tickMs: 110,
     ...overrides
   };
 }
